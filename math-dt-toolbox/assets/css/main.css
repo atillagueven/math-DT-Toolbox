@@ -4,10 +4,15 @@
 
 :root {
     --primary-color: #008751;
+    --secondary-color: #f0f8f4;
   }
   
   .bg-primary {
     background-color: var(--primary-color);
+  }
+
+  .bg-secondary {
+    background-color: var(--secondary-color);
   }
   
   .text-primary {
