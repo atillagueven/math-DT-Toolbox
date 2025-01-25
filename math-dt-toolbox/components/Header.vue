@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between items-center  bg-white/60 bg-opacity-30 backdrop-blur-md shadow-lg sm:px-2 md:px-10 lg:px-20 py-5 !sticky top-0 z-50">
+  <div class="flex justify-between items-center  bg-white/60 bg-opacity-30 backdrop-blur-md shadow-lg px-2 sm:px-2 md:px-10 lg:px-20 py-5 !sticky top-0 z-50">
     <div>
       <img src="/Logo-HSG.png" alt="St. Gallen Logo" class="h-12" />
     </div>
