@@ -1,7 +1,7 @@
 <template>
     <div>
       <!-- Footer Section -->
-      <footer class="bg-gray-800 text-white py-6">
+      <footer class="bg-gray-800 text-white py-6 mt-auto">
         <div class="container mx-auto px-6 text-center">
           <p class="text-sm">
             Developed for the Master Thesis of Atilla Güven by the IWI-HSG

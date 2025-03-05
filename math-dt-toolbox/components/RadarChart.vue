@@ -1,10 +1,9 @@
 <template>
-  <RadarChart :data="chartData" />
+  <RadarChart :data="chartData" :options="chartOptions" />
 </template>
 
 <script setup>
 import { useAsyncData } from '#app';
-
 
 const { data } = useAsyncData(() => $fetch('/server/api/evaluate', { method: 'POST', body: { answers } }));
 
@@ -17,4 +16,5 @@ const chartData = computed(() => ({
     },
   ],
 }));
+
 </script>
