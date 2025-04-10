@@ -40,7 +40,7 @@ export const useToolsStore = defineStore('tools', () => {
       description: "A comprehensive framework for addressing cybersecurity risks.",
       reference: "Lee, I. (2021). Cybersecurity: Risk management framework and investment cost analysis. *Business Horizons, 64*(5), 659-671. https://doi.org/10.1016/j.bushor.2021.02.022",
       details: "This framework provides a holistic approach to cybersecurity risk management, integrating both technological and human factors to address evolving threats. It emphasizes cost-effective investments in cybersecurity while ensuring that organizations maintain compliance and resilience. The model guides companies in identifying, assessing, and mitigating risks through structured governance and proactive security strategies. By considering sociotechnical elements, organizations can build comprehensive security policies that align with broader digital transformation goals, ensuring both technological robustness and user awareness in cybersecurity measures.",
-      pillar: "Cybersecurity and Governance",
+      pillar: "Cybersecurity and Data Governance",
     },
     {
       id: 6,
@@ -48,7 +48,7 @@ export const useToolsStore = defineStore('tools', () => {
       description: "Enterprise framework for managing data as a strategic asset.",
       reference: "Abraham, R., Schneider, J., & vom Brocke, J. (2019). Data governance: A conceptual framework, structured review, and research agenda. *International Journal of Information Management, 49*, 424-438. https://doi.org/10.1016/j.ijinfomgt.2019.07.008",
       details: "The Data Governance Framework provides organizations with a structured approach to managing data as a critical enterprise asset. It defines six key dimensions: governance mechanisms, organizational scope, data scope, domain scope, antecedents, and consequences. This framework helps businesses navigate challenges related to data complexity, regulatory compliance, and innovation barriers. By distinguishing between data governance and data management, organizations can establish clearer policies, ensuring data quality, security, and strategic utilization for long-term business success in digital transformation initiatives.",
-      pillar: "Cybersecurity and Governance",
+      pillar: "Cybersecurity and Data Governance",
     },
     {
       id: 7,

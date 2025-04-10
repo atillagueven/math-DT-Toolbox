@@ -27,28 +27,69 @@ const chartData = computed(() => ({
   datasets: [
     {
       label: 'Maturity Scores',
-      backgroundColor: 'rgba(75, 192, 192, 0.2)', // Light green
-      borderColor: 'rgba(75, 192, 192, 1)', // Green border
-      pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+      backgroundColor: 'rgba(0, 135, 81, 0.2)', // Light green
+      borderColor: 'rgba(0, 135, 81, 1)', // Green border
+      pointBackgroundColor: 'rgba(0, 135, 81, 1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(75, 192, 192, 1)',
-      data: evaluationResult.value?.scores?.values || [],
+      pointHoverBorderColor: 'rgba(0, 135, 81, 1)',
+      data: evaluationResult.value?.scores?.values.filter(val => val !== null) || [],
     },
   ],
 }));
 
-// Define chart options to set the scale
 const chartOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  layout: {
+    autoPadding: true,
+    padding: {
+      top: 10,
+      bottom: 20,
+      left: 10,
+      right: 10
+    }
+
+  },
+  plugins: {
+    tooltip: {
+      titleFont: { size: 14 },
+      bodyFont: { size: 14 },
+      backgroundColor: 'rgba(0, 135, 81, 1)',
+      titleColor: '#fff',
+      bodyColor: '#fff',
+    },
+    legend: {
+      display: false,
+    }
+  },
   scales: {
     r: {
       min: 0,
       max: 5,
       ticks: {
-        stepSize: 0.5,
+        stepSize: 1,
+        color: '#374151', // Tailwind gray-700
+        font: {
+          size: 14,
+          weight: 'bold',
+        }
       },
-    },
-  },
+      pointLabels: {
+        font: {
+          size: 16,
+          weight: 'bold',
+        },
+        color: '#111827' // Tailwind gray-900
+      },
+      grid: {
+        color: 'rgba(0, 0, 0, 0.1)',
+      },
+      angleLines: {
+        color: 'rgba(0, 0, 0, 0.2)',
+      }
+    }
+  }
 };
 
 // Compute recommendations
@@ -58,28 +99,31 @@ const recommendations = computed(() => evaluationResult.value?.recommendations |
 <template>
   <div>
     <!-- Hero Section -->
-    <div class="flex lg:flex-row flex-col mt-10 gap-0 content-start items-center lg:items-stretch">
-      <!-- Left Side: Title and Description -->
-      <div class="flex-[1] flex items-center justify-center lg:justify-start">
-        <div class="p-6 pt-12 lg:p-12">
-          <h1 class="text-3xl lg:text-5xl font-bold text-surface-900 mb-4 lg:leading-normal text-center lg:text-left">
-            Your Personalized<br /><span class="text-primary">Recommendations</span> 
-          </h1>
-          <p class="text-surface-700 leading-normal mb-8 text-center lg:text-left">
-            Review your current maturity levels and explore tools tailored to strengthen your strategic digital transformation initiatives.
-          </p>
-        </div>
-      </div>
+    <div class="flex flex-col items-center text-center px-6 pt-12 lg:pt-20">
+      <h1 class="text-3xl lg:text-5xl font-bold text-surface-900 mb-4">
+        Your Personalized 
+        <span class="text-primary">Recommendations</span>
+      </h1>
+      <p class="text-surface-700 leading-normal mb-8 max-w-3xl">
+        Review your current maturity levels and explore tools tailored to strengthen your strategic digital transformation initiatives.
+      </p>
 
-      <!-- Right Side: Radar Chart -->
-      <div class="flex-[2] flex items-center justify-center">
-        <Chart type="radar" :data="chartData" :options="chartOptions" class="w-full max-w-[600px] h-auto" />
+      <!-- Radar Chart -->
+      <div class="w-full max-w-[900px] h-[40vh] mx-auto relative">
+        <Chart
+          type="radar"
+          :data="chartData"
+          :options="chartOptions"
+          class="w-full h-full"
+        />
       </div>
     </div>
 
     <!-- Recommended Tools Section -->
     <div class="container mx-auto px-10 py-12">
-      <h1 class="text-3xl font-bold mb-6">Recommended Tools</h1>
+      <h1 class="text-3xl font-bold">Recommended Tools</h1>
+      <p class="mb-6">Based on the maturity assessment, these are the recommended tools. You want to see different tools? <router-link to="/tools" class="text-primary underline hover:text-secondary transition">Go to tools!</router-link>
+      </p>
       <ul class="space-y-4">
         <li
           v-for="tool in recommendations"
@@ -107,6 +151,31 @@ const recommendations = computed(() => evaluationResult.value?.recommendations |
         </li>
       </ul>
     </div>
+
+    <!-- Call-to-Action Section -->
+    <section class="bg-primary text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+          <h2 class="text-3xl font-bold mb-6">
+            Find different Tools!
+          </h2>
+          <p class="text-lg mb-6">
+            You have completed the assessment but want to see all DT tools? 
+          </p>
+          <div>
+            <router-link
+              to="/tools"
+            >
+              <Button
+                label="All Tools"
+                class="!px-6 !py-2 hover:!bg-secondary hover:!text-white transition duration-300"
+              />
+            </router-link>
+          </div>
+          
+        </div>
+      </section>
+
+
   </div>
 </template>
 

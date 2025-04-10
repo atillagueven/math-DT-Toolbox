@@ -9,7 +9,7 @@ export const useQuestionnaireStore = defineStore('questionnaire', () => {
           {
             id: 1,
             title: 'AI Deployment',
-            text: 'How effectively is your organization leveraging AI technologies such as machine learning and deep learning for strategic operations?',
+            text: 'To what extent are AI technologies integrated into standardized processes for strategic operations, and are these processes regularly evaluated and improved?',
           },
           {
             id: 2,
@@ -44,27 +44,27 @@ export const useQuestionnaireStore = defineStore('questionnaire', () => {
           {
             id: 7,
             title: 'Process Definition & Improvement',
-            text: 'What strategies are used to map, optimize, and redesign business processes within your organization?',
+            text: 'To what extent are your business processes systematically documented, monitored, and continuously improved based on defined standards and KPIs?',
           },
           {
             id: 8,
             title: 'Process Standardization Establishment',
-            text: 'Are there defined standards and documentation for critical processes across your organization?',
+            text: 'To what extent are standards and documentation for critical processes established, consistently applied, maintained, and continuously improved across the organization?',
           },
         ],
       },
       {
-        pillar: 'Cybersecurity and Governance',
+        pillar: 'Cybersecurity and Data Governance',
         questions: [
           {
             id: 9,
             title: 'Data Management',
-            text: 'How robust is your data governance framework in managing data lifecycle, security, and compliance?',
+            text: 'To what extent does your organization follow standardized and actively maintained processes for managing data lifecycle, security, and compliance?',
           },
           {
             id: 10,
             title: 'Compliance Assurance',
-            text: 'How does your organization ensure adherence to regulatory and compliance requirements effectively?',
+            text: 'To what extent does your organization follow standardized and proactive processes to monitor and manage its reputation across digital and physical channels?',
           },
           {
             id: 11,
@@ -74,12 +74,12 @@ export const useQuestionnaireStore = defineStore('questionnaire', () => {
           {
             id: 12,
             title: 'Data Integrity',
-            text: 'What policies and measures are in place to maintain data accuracy, consistency, and security?',
+            text: 'To what extent are processes to ensure data accuracy, consistency, and security documented, monitored, and regularly reviewed?',
           },
           {
             id: 13,
             title: 'Reputation Safeguarding',
-            text: 'How does your organization monitor and manage its online and offline reputation?',
+            text: 'To what extent does your organization use structured and repeatable processes to monitor and manage its reputation across digital and physical channels?',
           },
         ],
       },
@@ -94,7 +94,7 @@ export const useQuestionnaireStore = defineStore('questionnaire', () => {
           {
             id: 15,
             title: 'Process Transparency',
-            text: 'What steps have been taken to ensure transparency in your organizational processes for accountability?',
+            text: 'To what extent are standardized and consistently applied processes in place to ensure transparency and accountability across the organization?',
           },
           {
             id: 16,
@@ -109,7 +109,7 @@ export const useQuestionnaireStore = defineStore('questionnaire', () => {
           {
             id: 17,
             title: 'Skills Acquisition Trainings',
-            text: 'What training programs are in place to develop digital skills and socio-emotional competencies in your workforce?',
+            text: 'To what extent does your organization implement structured training programs for digital and socio-emotional skills, with ongoing evaluation?',
           },
           {
             id: 18,
@@ -139,12 +139,12 @@ export const useQuestionnaireStore = defineStore('questionnaire', () => {
           {
             id: 22,
             title: 'Revenue Stream Innovation',
-            text: 'What initiatives have been taken to innovate and diversify revenue streams within your business model?',
+            text: 'How effective have initiatives been taken to innovate and diversify revenue streams within your business model?',
           },
           {
             id: 23,
             title: 'Ecosystem Creation',
-            text: 'How does your organization collaborate with partners and build ecosystems to drive innovation?',
+            text: 'To what extent are ecosystem collaborations with partners based on defined strategies and integrated into repeatable, measured processes?',
           },
         ],
       },
@@ -154,7 +154,7 @@ export const useQuestionnaireStore = defineStore('questionnaire', () => {
           {
             id: 24,
             title: 'Customer Need Alignment',
-            text: 'How well does your organization identify and align with evolving customer needs and expectations?',
+            text: 'To what extent are customer needs systematically identified, documented, and addressed through repeatable and optimized processes?',
           },
           {
             id: 25,
@@ -174,12 +174,12 @@ export const useQuestionnaireStore = defineStore('questionnaire', () => {
           {
             id: 27,
             title: 'Leadership-Driven Change',
-            text: 'How effectively does your leadership drive change initiatives within the organization?',
+            text: 'To what extent is leadership involvement in transformation managed through structured and continuously monitored change processes?',
           },
           {
             id: 28,
             title: 'Change Management Excellence',
-            text: 'What frameworks or methodologies are in place to manage organizational change during digital transformation?',
+            text: 'To what extent does your organization apply standardized and continuously optimized frameworks to manage change during digital transformation?',
           },
           {
             id: 29,

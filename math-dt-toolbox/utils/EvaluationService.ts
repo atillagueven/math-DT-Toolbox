@@ -26,24 +26,36 @@ export class EvaluationService {
       const pillars: Record<string, number[]> = {
         'Technology and Infrastructure': [1, 2, 3, 4, 5, 6],
         'Process Automation and Optimization': [7, 8],
-        'Cybersecurity and Governance': [9, 10, 11, 12, 13],
+        'Cybersecurity and Data Governance': [9, 10, 11, 12, 13],
         'Data and Analytics': [14, 15, 16],
         'Digital Skills and Training': [17, 18, 19],
         'Business Model Innovation': [20, 21, 22, 23],
         'Customer Experience': [24, 25],
         'Digital Leadership and Culture': [26, 27, 28, 29],
       };
-  
-      const scores = Object.entries(pillars).map(([pillar, questionIds]) => {
-        const total = questionIds.reduce((sum, id) => sum + (answers[id] || 0), 0);
-        const avg = total / questionIds.length;
-        return { pillar, score: avg };
-      });
-  
-      return {
-        labels: scores.map((s) => s.pillar),
-        values: scores.map((s) => s.score),
-      };
+    
+      const scores = Object.entries(pillars).reduce(
+        (acc, [pillar, questionIds]) => {
+          // Filter out "Not Relevant" answers (marked as -1)
+          const relevantAnswers = questionIds
+            .map((id) => answers[id])
+            .filter((val) => val !== undefined && val !== -1);
+    
+          if (relevantAnswers.length === 0) {
+            return acc; // skip this pillar completely
+          }
+    
+          const total = relevantAnswers.reduce((sum, val) => sum + val, 0);
+          const avg = total / relevantAnswers.length;
+    
+          acc.labels.push(pillar);
+          acc.values.push(avg);
+          return acc;
+        },
+        { labels: [] as string[], values: [] as number[] }
+      );
+    
+      return scores;
     }
   
     private static recommendTools(scores: { labels: string[]; values: number[] }, tools: any[]) {

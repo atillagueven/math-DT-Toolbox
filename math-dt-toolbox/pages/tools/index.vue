@@ -5,6 +5,7 @@ import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
 import ToggleButton from 'primevue/togglebutton';
 import { useToolsStore } from '@/stores/tools';
+import { onMounted } from 'vue';
 
 // Access the tools store
 const toolsStore = useToolsStore();
@@ -39,22 +40,66 @@ const filteredTools = computed(() => {
   });
 });
 
+const hasEvaluationResult = ref(false);
+
+onMounted(() => {
+  if (sessionStorage.getItem('evaluationResult')) {
+    hasEvaluationResult.value = true;
+  }
+});
+
 const route = useRoute();
 </script>
 
 <template>
   <div>
     <!-- Hero Section -->
-    <div class="flex flex-col lg:flex-row gap-0 content-start">
-      <div class="flex-4 flex items-center justify-center">
-        <div class="p-6 pt-12 lg:p-12"> 
+    <div class="relative flex flex-col lg:flex-row gap-0 content-start">
+      <div class="flex-4 flex items-center justify-center absolute z-10 w-full h-full">
+        <div class="container mx-auto px-6 lg:pr-96 lg:pl-6 pt-12 lg:pt-24 z-20">
           <h1 class="text-3xl lg:text-5xl font-bold text-surface-900 lg:leading-normal text-left">
             All DT tools in <span class="text-primary">one place.</span>
           </h1>
+          <p class="mt-2 text-surface-700">
+            Searching for a strategic tool, method or framework to evolve the digital transformation in your organization? 
+            Find, filter or search for research based tools, which guide you along the DT journey.
+          </p>
+          <div class="flex flex-wrap gap-4 mt-4">
+            <router-link
+              v-if="!hasEvaluationResult"
+              to="/questionnaire"
+            >
+              <Button
+                label="Get Recommendations"
+                class="!px-6 !py-2 hover:!bg-secondary hover:!text-white transition duration-300"
+              />
+            </router-link>
+
+            <router-link
+              v-else
+              to="/recommendation"
+            >
+              <Button
+                label="View Your Result"
+                class="!px-6 !py-2 hover:!bg-secondary hover:!text-white transition duration-300"
+              />
+            </router-link>
+          </div>
         </div>
       </div>
-      <div class="flex-6">
-        <video src="/bg-video-cut.mp4" alt="hero-1" class="h-full w-full object-cover" autoplay loop playsinline muted></video>
+      <div class="flex-6 relative z-0 overflow-hidden">
+        <div class="absolute inset-0 bg-white opacity-50 block lg:hidden z-10"></div>
+        <div class="pl-0 lg:pl-[50%]">
+          <video
+            src="/bg-video-cut.mp4"
+            alt="hero-1"
+            class="h-full w-full object-cover"
+            autoplay
+            loop
+            playsinline
+            muted
+          ></video>
+        </div>
       </div>
     </div>
 
@@ -66,6 +111,7 @@ const route = useRoute();
           
           <!-- Pillar ToggleButtons (Takes full width) -->
           <div class="w-full">
+            <p class="text-accent">Filter:</p>
             <div class="flex flex-wrap gap-2">
               <ToggleButton
                 v-for="pillar in uniquePillars"
@@ -127,6 +173,40 @@ const route = useRoute();
         </li>
       </ul>
     </div>
+
+    <!-- Call-to-Action Section -->
+    <section class="bg-primary text-white py-12">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-6">
+          Ready to Transform Your Business?
+        </h2>
+        <p class="text-lg mb-6">
+          Complete a maturity assessment and get tailored recommendations based on the results. It only takes 10 minutes. 
+        </p>
+        <div>
+          <router-link
+            v-if="!hasEvaluationResult"
+            to="/questionnaire"
+          >
+            <Button
+              label="Get Recommendations"
+              class="!px-6 !py-2 hover:!bg-secondary hover:!text-white transition duration-300"
+            />
+          </router-link>
+
+          <router-link
+            v-else
+            to="/recommendation"
+          >
+            <Button
+              label="View Your Result"
+              class="!px-6 !py-2 hover:!bg-secondary hover:!text-white transition duration-300"
+            />
+          </router-link>
+        </div>
+        
+      </div>
+    </section>
   </div>
 </template>
 

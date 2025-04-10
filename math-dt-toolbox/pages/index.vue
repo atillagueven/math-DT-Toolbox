@@ -2,7 +2,15 @@
 import { useRoute } from 'vue-router';
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
+import { onMounted } from 'vue';
 
+const hasEvaluationResult = ref(false);
+
+onMounted(() => {
+  if (sessionStorage.getItem('evaluationResult')) {
+    hasEvaluationResult.value = true;
+  }
+});
 
 const route = useRoute()
 </script>
@@ -38,18 +46,52 @@ const route = useRoute()
         <!-- Stats -->
         <div class="grid grid-cols-3 items-center gap-8 mt-10">
           <div class="text-center">
-            <p class="text-3xl font-bold">15</p>
+            <p class="text-3xl font-bold">16</p>
             <p>DT Tools</p>
           </div>
           <div class="text-center">
             <img src="/Logo-HSG.png" class="size mx-auto max-w-10"/>
-            <p>Master Thesis of the University of St.Gallen (HSG)</p>
+            <p>Master Thesis of the University of St.Gallen</p>
           </div>
           <div class="text-center">
             <p class="text-3xl font-bold">100%</p>
             <p>Research Based & peer reviewed tools</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Call-to-Action Section -->
+    <section class="bg-primary text-white py-12">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-6">
+          Ready to Transform Your Business?
+        </h2>
+        <p class="text-lg mb-6">
+          Complete a maturity assessment and get tailored recommendations based on the results. It only takes 10 minutes. 
+        </p>
+        <div>
+          <router-link
+            v-if="!hasEvaluationResult"
+            to="/questionnaire"
+          >
+            <Button
+              label="Get Recommendations"
+              class="!px-6 !py-2 hover:!bg-secondary hover:!text-white transition duration-300"
+            />
+          </router-link>
+
+          <router-link
+            v-else
+            to="/recommendation"
+          >
+            <Button
+              label="View Your Result"
+              class="!px-6 !py-2 hover:!bg-secondary hover:!text-white transition duration-300"
+            />
+          </router-link>
+        </div>
+        
       </div>
     </section>
 
@@ -85,25 +127,7 @@ const route = useRoute()
       </div>
     </section>
 
-    <!-- Call-to-Action Section -->
-    <section class="bg-primary text-white py-12">
-      <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold mb-6">
-          Ready to Transform Your Business?
-        </h2>
-        <p class="text-lg mb-6">
-          Get started today and leverage cutting-edge tools for your digital
-          transformation journey.
-        </p>
-        <router-link to="/questionnaire">
-          <Button
-          label="Get Recommendations"
-          class="!rounded-xl"
-          />  
-        </router-link>
-        
-      </div>
-    </section>
+
 
   </div>
 </template>
