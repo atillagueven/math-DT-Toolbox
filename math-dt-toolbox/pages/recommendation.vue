@@ -71,13 +71,13 @@ const chartOptions = {
         stepSize: 1,
         color: '#374151', // Tailwind gray-700
         font: {
-          size: 14,
+          size: window.innerWidth < 640 ? 10 : 14,
           weight: 'bold',
         }
       },
       pointLabels: {
         font: {
-          size: 16,
+          size: window.innerWidth < 640 ? 8 : 14,
           weight: 'bold',
         },
         color: '#111827' // Tailwind gray-900
@@ -109,7 +109,7 @@ const recommendations = computed(() => evaluationResult.value?.recommendations |
       </p>
 
       <!-- Radar Chart -->
-      <div class="w-full max-w-[900px] h-[40vh] mx-auto relative">
+      <div class="relative w-full px-5 sm:px-0 max-w-full sm:max-w-[900px] h-[300px] sm:h-[40vh] mx-auto">
         <Chart
           type="radar"
           :data="chartData"
